@@ -10,3 +10,7 @@ h1 {
   text-align: center;
   margin: 0;
 }
+
+.app-container {
+  margin-top: 25px;
+}
