@@ -1,5 +1,7 @@
 Vue.config.devtools = true;
 
+const socket = io.connect('http://localhost:5050');
+
 Vue.component('app-header', {
   template: `
     <div class="header">
@@ -35,7 +37,7 @@ Vue.component('add-todo', {
       if (this.todo === '') {
         alert('The field is empty');
       } else {
-        this.$emit('todo-added', this.todo);
+        socket.emit('todo', this.todo);
       }
     }
   }
@@ -48,15 +50,13 @@ Vue.component('todo-list', {
   template: `
     <div class="container">
       <div class="row">
-        <div class="twelve columns">
-          <div class="empty" v-if="list.length === 0">
+        <div class="twelve columns" v-if="list.length === 0">
             No todo added yet
+        </div>
+        <div class="todo-items" v-else>
+          <div class="four columns todo-item" v-for="(item, index) in list" :key="index">
+            {{ item }}
           </div>
-          <ul v-else>
-            <li v-for="(todo, index) in list" :key="index">
-              {{ todo }}
-            </li>
-          </ul>
         </div>
       </div>
     </div>
@@ -68,9 +68,9 @@ const app = new Vue({
   data: () => ({
     todoItems: [],
   }),
-  methods: {
-    updateTodoList(newTodo) {
-      this.todoItems.push(newTodo);
-    }
-  }
+  created() {
+    socket.on('todo', (data) => { 
+      this.todoItems.push(data);
+    });
+  },
 });

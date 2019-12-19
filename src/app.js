@@ -13,4 +13,8 @@ const io = socket(server);
 
 io.on('connection', (socket) => {
   console.log('Connection: ', socket.id);
+
+  socket.on('todo', (data) => {
+    io.sockets.emit('todo', data);
+  });
 });
