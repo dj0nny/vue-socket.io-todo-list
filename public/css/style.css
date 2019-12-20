@@ -11,6 +11,33 @@ h1 {
   margin: 0;
 }
 
+.full {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.header {
+  padding: 20px;
+}
+
+.notifications {
+  position: fixed;
+  width: 250px;
+  right: 0;
+  height: 100%;
+  top: 0;
+  border-left: 1px solid #D1D1D1;
+  padding: 7px;
+  overflow-y: auto;
+}
+
+.complete {
+  background: #000;
+  color: #fff;
+}
+
 .app-container {
   margin-top: 25px;
 }

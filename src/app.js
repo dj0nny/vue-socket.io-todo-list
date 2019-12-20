@@ -17,4 +17,8 @@ io.on('connection', (socket) => {
   socket.on('todo', (data) => {
     io.sockets.emit('todo', data);
   });
+
+  socket.on('marked', (data) => {
+    io.sockets.emit('marked', data);
+  });
 });
