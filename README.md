@@ -1,23 +1,52 @@
-# Welcome to vue-socket.io 👋
-[![Version](https://img.shields.io/npm/v/vue-socket.io.svg)](https://www.npmjs.com/package/vue-socket.io)
+# vue-socket.io-todo-list ✔️
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/dj0nny/vue-socket.io#readme)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 
 > Simple todo app built w/ Vue and Socket.io
 
-### 🏠 [Homepage](https://github.com/dj0nny/vue-socket.io)
-
 ### ✨ [Demo](https://github.com/dj0nny/vue-socket.io)
 
-## Install
+### Download
+
+Clone the repository using **Git**:
+```bash
+git clone https://github.com/dj0nny/vue-socket.io-todo-list.git
+```
+Or download [here](https://github.com/dj0nny/vue-socket.io-todo-list/archive/master.zip).
+
+### Install
+
+For installing the dependencies run:
 
 ```sh
+cd vue-socket.io-todo-list
+npm install
+# OR
 yarn install
 ```
 
+### Usage
+
+For running the Express server with Nodemon:
+
+```sh
+npm run dev
+# OR
+yarn dev
+```
+You can also running this project without Nodemon:
+
+```sh
+npm run start
+# OR
+yarn start
+```
+
+The server will be up and running at http://localhost:5050
+
 ## Author
 
-👤 **dj0nny**
+👤 **Francesco Giambruno**
 
 * Website: https://dj0nny.github.io/
 * Twitter: [@Dj0nny96](https://twitter.com/Dj0nny96)
