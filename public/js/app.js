@@ -4,15 +4,14 @@ const socket = io.connect('http://localhost:5050');
 
 Vue.component('app-header', {
   template: `
-    <div class="header">
-      <div class="container">
-        <div class="row">
-          <div class="twelve columns">
-            <h1>Vue - Socket.io</h1>
-          </div>
-        </div>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">Vue - Socket.io</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="https://github.com/dj0nny/vue-socket.io" target="_blank">Github</a></li>
+        </ul>
       </div>
-    </div>
+    </nav>
   `
 });
 
@@ -20,11 +19,12 @@ Vue.component('add-todo', {
   template: `
     <div class="container">
       <div class="row">
-        <div class="ten columns">
-          <input class="u-full-width" v-model="todo" type="text" placeholder="Todo" />
+        <div class="input-field col m12">
+          <input placeholder="Todo..." v-model="todo" type="text" class="validate">
+          <label for="first_name">Todo name</label>
         </div>
-        <div class="two columns">
-          <button @click="addTodo" class="u-full-width">Add todo</button>
+        <div class="col m12">
+          <a @click="addTodo" class="waves-effect waves-light btn">button</a>
         </div>
       </div>
     </div>
@@ -56,12 +56,19 @@ Vue.component('todo-list', {
   template: `
     <div class="container">
       <div class="row">
-        <div class="twelve columns" v-if="list.length === 0">
+        <div class="col m12" v-if="list.length === 0">
             No todo added yet
         </div>
         <div class="todo-items" v-else>
-          <div class="four columns todo-item" v-bind:class="{ complete: item.done }" v-for="(item, index) in list" :key="index" @click="markTodo(item)">
-            {{ item.name }}
+          <div class="col s12 m4 todo-item" v-bind:class="{ complete: item.done }" v-for="(item, index) in list" :key="index">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text">
+                <span class="card-title">{{ item.name }}</span>
+              </div>
+              <div class="card-action">
+                <a href="#" @click="markTodo(item)">Mark as done</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -70,7 +77,7 @@ Vue.component('todo-list', {
   methods: {
     markTodo(todo) {
       if (todo.done) {
-        this.$emit('marked-todo', todo);
+        // this.$emit('marked-todo', todo);
         socket.emit('marked', {
           todo,
           notification: `${todo.name} was marked as not done`,
@@ -86,32 +93,18 @@ Vue.component('todo-list', {
   }
 });
 
-Vue.component('notifications', {
-  props: {
-    list: Array
-  },
-  template: `
-    <div class="notifications">
-      <div class="notification-item" v-for="(item, index) in list" :key="index">
-        {{ item }}
-      </div>
-    </div>
-  `
-});
-
 const app = new Vue({
   el: '#app',
   data: () => ({
     todoItems: [],
-    notifications: [],
   }),
   created() {
     socket.on('todo', (data) => { 
       this.todoItems.push(data.todo);
-      this.notifications.push(data.notification)
+      M.toast({ html: data.notification })
     }),
     socket.on('marked', (data) => {
-      this.notifications.push(data.notification);
+      M.toast({ html: data.notification })
       this.todoItems.map(element => {
         if (element.name === data.todo.name) {
           element.done = !element.done;

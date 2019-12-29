@@ -6,48 +6,19 @@ body {
   padding: 0;
 }
 
-h1 {
-  text-align: center;
-  margin: 0;
+nav {
+  background-color: #fff;
 }
 
-.full {
-  width: 100% !important;
-  max-width: 100% !important;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.header {
-  padding: 20px;
-}
-
-.notifications {
-  position: fixed;
-  width: 250px;
-  right: 0;
-  height: 100%;
-  top: 0;
-  border-left: 1px solid #D1D1D1;
-  padding: 7px;
-  overflow-y: auto;
-}
-
-.complete {
-  background: #000;
-  color: #fff;
+nav .brand-logo,
+nav ul a {
+  color: #000;
 }
 
 .app-container {
   margin-top: 25px;
 }
 
-.todo-item {
-  padding: 20px;
-  margin-left: 0;
-  text-align: center;
-  border: 1px solid #bbb;
-  margin-bottom: 15px;
-  margin-right: 15px;
-  cursor: pointer;
+.complete .card {
+  background-color: #304455 !important;
 }
