@@ -4,8 +4,6 @@
 
 > Simple todo app built w/ Vue and Socket.io
 
-### ✨ [Demo](https://github.com/dj0nny/vue-socket.io)
-
 ### Download
 
 Clone the repository using **Git**:

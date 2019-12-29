@@ -2,7 +2,7 @@
   "name": "vue-socket.io",
   "version": "1.0.0",
   "description": "Simple todo app built w/ Vue and Socket.io",
-  "main": "src/index.js",
+  "main": "src/app.js",
   "repository": "https://github.com/dj0nny/vue-socket.io.git",
   "author": "dj0nny <frank96990@gmail.com>",
   "scripts": {
