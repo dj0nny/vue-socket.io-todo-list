@@ -6,6 +6,7 @@
   "repository": "https://github.com/dj0nny/vue-socket.io.git",
   "author": "dj0nny <frank96990@gmail.com>",
   "scripts": {
+    "start": "node src/app.js",
     "dev": "nodemon src/app.js"
   },
   "license": "MIT",

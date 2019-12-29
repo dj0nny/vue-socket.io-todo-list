@@ -2,10 +2,11 @@ const express = require('express');
 const socket = require('socket.io');
 
 const app = express();
+const port = process.env.PORT || 5050;
 
 app.use(express.static('public'));
 
-const server = app.listen(5050, () =>{
+const server = app.listen(port, () =>{
   console.log('Server is up at http://localhost:5050');
 });
 
